@@ -1,17 +1,17 @@
 'use strict';
 
 var express = require('express'),
-	  posts = require('/mock/posts.json');
+	  posts = require(__dirname + '/src/mock/posts.json');
 
 var postsLists = Object.keys(posts).map(function(value) {
 							         return posts[value]})
 
 var app = express();
 
-app.use('/static', express.static(__dirname + '/public'))
+app.use('/static', express.static(__dirname + '/src/public'))
 
 app.set('view engine', 'jade');
-app.set('views', __dirname + '/templates');
+app.set('views', __dirname + '/src/templates');
 
 app.get('/', function(req, res){
 	var path = req.path;
